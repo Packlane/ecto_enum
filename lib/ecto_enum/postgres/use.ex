@@ -49,6 +49,8 @@ defmodule EctoEnum.Postgres.Use do
         defmacro unquote(EctoEnum.Macro.to_function(atom))(), do: unquote(atom)
       end
 
+      defmacro all, do: unquote(enums)
+
       def valid_value?(value) do
         Enum.member?(unquote(valid_values), value)
       end

@@ -30,6 +30,8 @@ defmodule EctoEnum.Use do
         defmacro unquote(EctoEnum.Macro.to_function(key))(), do: unquote(value || key)
       end
 
+      defmacro all, do: unquote(keys)
+
       for {key, value} <- opts, k <- Enum.uniq([key, value, Atom.to_string(key)]) do
         def cast(unquote(k)), do: {:ok, unquote(key)}
       end
